@@ -78,12 +78,13 @@ public class Index {
 
 			System.out.print("Enter your name: ");
 			name = scanner.nextLine();
+			name = name.trim();
 			
 			if (name.length() == 0) {
 				System.out.println("This field is mandatory... Please try again...");
 				isNameValid = false;
 			} else if(!name.matches(".*\\d+.*")) {
-				System.out.println("Name cannot cannot numbers. Please enter only alphabets...");
+				System.out.println("Name cannot numbers. Please enter only alphabets...");
 				isNameValid = false;
 
 			}
