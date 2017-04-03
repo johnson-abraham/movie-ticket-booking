@@ -83,7 +83,7 @@ public class Index {
 			if (name.length() == 0) {
 				System.out.println("This field is mandatory... Please try again...");
 				isNameValid = false;
-			} else if (!name.matches(".*\\d+.*")) {
+			} else if (name.matches(".*\\d+.*")) {
 				System.out.println("Name cannot numbers. Please enter only alphabets...");
 				isNameValid = false;
 
