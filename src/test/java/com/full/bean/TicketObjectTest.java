@@ -15,16 +15,15 @@ import com.full.config.ApplicationConfiguration;
 
 /**
  * @author Johnson Abraham
- * @since 02-Apr-2017, 6:37:26 AM
- * MovieTicketBooking
+ * @since 02-Apr-2017, 6:37:26 AM MovieTicketBooking
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes=ApplicationConfiguration.class)
+@ContextConfiguration(classes = ApplicationConfiguration.class)
 public class TicketObjectTest {
 
 	@Autowired
 	private Ticket ticket;
-	
+
 	@Test
 	public void test() {
 		assertNotNull(ticket);

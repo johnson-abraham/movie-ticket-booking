@@ -10,16 +10,15 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author Johnson Abraham
- * @since 01-Apr-2017, 7:51:57 PM
- * MovieTicketBooking
+ * @since 01-Apr-2017, 7:51:57 PM MovieTicketBooking
  */
 @Component
-@Scope(scopeName=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Scope(scopeName = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class Ticket {
-	
+
 	private Person person;
 	private String seatNumber;
-	
+
 	/**
 	 * 
 	 */
@@ -79,5 +78,5 @@ public class Ticket {
 			return false;
 		return true;
 	}
-	
+
 }

@@ -28,15 +28,15 @@ public class MainController {
 		MainController mainController = new MainController();
 		BookedTickets bookedTickets = context.getBean(BookedTickets.class);
 		context.getBean(TicketService.class).clearTickets();
-		
+
 		int inputChoice = 0;
-		
+
 		do {
-			
+
 			inputChoice = choice.getChoice();
-			
-			switch(inputChoice) {
-			
+
+			switch (inputChoice) {
+
 			case 1:
 				mainController.bookTicket();
 				break;
@@ -48,20 +48,20 @@ public class MainController {
 			default:
 				System.out.println("Please enter a number between 1 and 3...");
 			}
-			
-		} while(inputChoice <= 2);
+
+		} while (inputChoice <= 2);
 
 	}
-	
+
 	public void bookTicket() {
-		
+
 		ApplicationContext context = InstanceCreator.getApplicationContext();
 		Scanner input = InstanceCreator.getScanner();
 		Index index = context.getBean(Index.class);
-		
+
 		String toContinue = "yes";
 		boolean isInputValid = true;
-		
+
 		do {
 
 			Ticket ticket = index.showIndex();
@@ -72,22 +72,22 @@ public class MainController {
 			} else {
 				index.printFailureMessage();
 			}
-			
+
 			System.out.println();
-			
+
 			do {
-				
+
 				isInputValid = true;
-				
+
 				System.out.print("Do you want to book another ticket? [Press 'Y' for Yes, Press 'N' for No]: ");
 				toContinue = input.nextLine();
-				
-				if(!((toContinue.toUpperCase().equals("Y") || (toContinue.toUpperCase().equals("N"))))) {
+
+				if (!((toContinue.toUpperCase().equals("Y") || (toContinue.toUpperCase().equals("N"))))) {
 					isInputValid = false;
 				}
-				
-			} while(!isInputValid);
-			
+
+			} while (!isInputValid);
+
 		} while ((toContinue.trim().toUpperCase().equals("YES")) || (toContinue.trim().toUpperCase().equals("Y")));
 
 	}

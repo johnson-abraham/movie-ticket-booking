@@ -15,32 +15,31 @@ import com.full.config.ApplicationConfiguration;
 
 /**
  * @author Johnson Abraham
- * @since 02-Apr-2017, 2:17:38 PM
- * MovieTicketBooking
+ * @since 02-Apr-2017, 2:17:38 PM MovieTicketBooking
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes=ApplicationConfiguration.class)
+@ContextConfiguration(classes = ApplicationConfiguration.class)
 public class SeatsDBDoesSeatExistTest {
 
 	@Autowired
 	private SeatsDB seatsDB;
-	
+
 	@Test
 	public void testDoesSeatExistTrue() {
 
 		assertTrue(seatsDB.doesSeatExist("A1"));
 		assertTrue(seatsDB.doesSeatExist("G12"));
 		assertTrue(seatsDB.doesSeatExist("D11"));
-		
+
 	}
-	
+
 	@Test
 	public void testDoesSeatExistFalse() {
-		
+
 		assertFalse(seatsDB.doesSeatExist("A0"));
 		assertFalse(seatsDB.doesSeatExist("G13"));
 		assertFalse(seatsDB.doesSeatExist("H29"));
-		
+
 	}
 
 }

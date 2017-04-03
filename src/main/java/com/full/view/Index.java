@@ -45,7 +45,7 @@ public class Index {
 				for (int i = 1; i <= length; i++) {
 					System.out.print("X");
 				}
-				
+
 				System.out.print("  ");
 			}
 
@@ -59,7 +59,7 @@ public class Index {
 	public Ticket showIndex() {
 
 		Scanner scanner = InstanceCreator.getScanner();
-		
+
 		String seatNumber = new String();
 		String name = new String();
 		String email = new String();
@@ -79,11 +79,11 @@ public class Index {
 			System.out.print("Enter your name: ");
 			name = scanner.nextLine();
 			name = name.trim();
-			
+
 			if (name.length() == 0) {
 				System.out.println("This field is mandatory... Please try again...");
 				isNameValid = false;
-			} else if(!name.matches(".*\\d+.*")) {
+			} else if (!name.matches(".*\\d+.*")) {
 				System.out.println("Name cannot numbers. Please enter only alphabets...");
 				isNameValid = false;
 
@@ -97,11 +97,11 @@ public class Index {
 
 			System.out.print("Enter your email: ");
 			email = scanner.nextLine();
-			
-			if(email.length() == 0) {
+
+			if (email.length() == 0) {
 				System.out.println("This field is mandatory... Please try again...");
 				isEmailValid = false;
-			} else if(!EmailValidator.getInstance(false).isValid(email)) {
+			} else if (!EmailValidator.getInstance(false).isValid(email)) {
 				System.out.println("Incorrect email format.. Please try again...");
 				isEmailValid = false;
 			}
@@ -111,19 +111,19 @@ public class Index {
 		do {
 
 			isSeatValid = true;
-			
+
 			System.out.print("Please select your seat number: ");
 			seatNumber = scanner.nextLine();
 			seatNumber = seatNumber.toUpperCase();
-			
-			if(!seatsService.doesSeatExist(seatNumber)) {
+
+			if (!seatsService.doesSeatExist(seatNumber)) {
 				System.out.println("You seemed to have typed an invalid seat number. Please try again..");
 				isSeatValid = false;
-			} else if(!seatsService.isSeatAvailable(seatNumber)) {
+			} else if (!seatsService.isSeatAvailable(seatNumber)) {
 				System.out.println("Sorry, the seat you've entered is not available. Please select another seat...");
 				isSeatValid = false;
 			}
-			
+
 		} while (!isSeatValid);
 
 		Person person = InstanceCreator.getApplicationContext().getBean(Person.class);
@@ -137,16 +137,16 @@ public class Index {
 		return ticket;
 
 	}
-	
+
 	public void printSuccessMessage(Ticket ticket) {
-		
+
 		System.out.println("Congratulations!!! Your seat has been booked. Details of your ticket below..");
-		
+
 		System.out.println("Name: " + ticket.getPerson().getName());
-		System.out.println("Email: "+ ticket.getPerson().getEmail());
-		System.out.println("Seat Number: "+ ticket.getSeatNumber());
+		System.out.println("Email: " + ticket.getPerson().getEmail());
+		System.out.println("Seat Number: " + ticket.getSeatNumber());
 	}
-	
+
 	public void printFailureMessage() {
 		System.out.println("Sorry, please try again later..");
 	}

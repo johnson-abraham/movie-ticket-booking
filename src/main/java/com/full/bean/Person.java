@@ -9,16 +9,15 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author Johnson Abraham
- * @since 01-Apr-2017, 7:51:18 PM
- * MovieTicketBooking
+ * @since 01-Apr-2017, 7:51:18 PM MovieTicketBooking
  */
 @Component
-@Scope(scopeName=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+@Scope(scopeName = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class Person {
 
 	private String name;
 	private String email;
-	
+
 	/**
 	 * 
 	 */
@@ -77,5 +76,5 @@ public class Person {
 			return false;
 		return true;
 	}
-	
+
 }
