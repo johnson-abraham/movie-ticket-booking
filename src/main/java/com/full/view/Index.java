@@ -95,8 +95,10 @@ public class Index {
 			
 			if(email.length() == 0) {
 				System.out.println("This field is mandatory... Please try again...");
+				isEmailValid = false;
 			} else if(!EmailValidator.getInstance(false).isValid(email)) {
 				System.out.println("Incorrect email format.. Please try again...");
+				isEmailValid = false;
 			}
 
 		} while (!isEmailValid);
