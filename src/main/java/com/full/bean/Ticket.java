@@ -49,4 +49,35 @@ public class Ticket {
 		return "Ticket [person=" + person + ", seatNumber=" + seatNumber + "]";
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((person == null) ? 0 : person.hashCode());
+		result = prime * result + ((seatNumber == null) ? 0 : seatNumber.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Ticket other = (Ticket) obj;
+		if (person == null) {
+			if (other.person != null)
+				return false;
+		} else if (!person.equals(other.person))
+			return false;
+		if (seatNumber == null) {
+			if (other.seatNumber != null)
+				return false;
+		} else if (!seatNumber.equals(other.seatNumber))
+			return false;
+		return true;
+	}
+	
 }
