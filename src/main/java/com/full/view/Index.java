@@ -109,6 +109,7 @@ public class Index {
 			
 			System.out.print("Please select your seat number: ");
 			seatNumber = scanner.nextLine();
+			seatNumber = seatNumber.toUpperCase();
 			
 			if(!seatsService.doesSeatExist(seatNumber)) {
 				System.out.println("You seemed to have typed an invalid seat number. Please try again..");

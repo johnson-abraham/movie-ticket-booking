@@ -31,5 +31,13 @@ public class TicketBookedDB {
 	public boolean persist(Ticket ticket) {
 		return bookedTickets.add(ticket);
 	}
+
+	public Set<Ticket> getBookedTickets() {
+		return bookedTickets;
+	}
+	
+	public void clearTickets() {
+		bookedTickets.clear();
+	}
 	
 }

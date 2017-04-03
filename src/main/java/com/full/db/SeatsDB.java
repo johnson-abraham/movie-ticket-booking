@@ -22,9 +22,7 @@ public class SeatsDB {
 	
 	public static final int ROWS = 7;
 	public static final int COLUMNS = 12;
-	/**
-	 * 
-	 */
+	
 	public SeatsDB(Map<String, Boolean> seatNumbers) {
 		this.seatNumbers = seatNumbers;
 		populateSeats();

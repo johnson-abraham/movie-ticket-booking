@@ -3,6 +3,8 @@
  */
 package com.full.service;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,5 +24,13 @@ public class TicketService {
 	
 	public boolean storeTicket(Ticket ticket) {
 		return ticketBookedDB.persist(ticket);
+	}
+	
+	public Set<Ticket> getTickets() {
+		return ticketBookedDB.getBookedTickets();
+	}
+	
+	public void clearTickets() {
+		ticketBookedDB.clearTickets();
 	}
 }
