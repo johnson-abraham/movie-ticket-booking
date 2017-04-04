@@ -6,7 +6,6 @@ package com.full.view;
 import java.util.Map;
 import java.util.Scanner;
 
-import org.apache.commons.validator.routines.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +26,7 @@ public class Index {
 	private SeatsService seatsService;
 	@Autowired
 	private InputService inputService;
-
+	
 	public void printSeats() {
 
 		int columns = seatsService.getColumnsCount();
@@ -67,9 +66,6 @@ public class Index {
 		String name = new String();
 		String email = new String();
 
-		boolean isEmailValid = false;
-		boolean isSeatValid = false;
-
 		this.printSeats();
 
 		System.out.println();
@@ -77,50 +73,25 @@ public class Index {
 		do {
 			System.out.print("Enter your name: ");
 			name = scanner.nextLine();
-		} while (!inputService.isNameValid(name));
+		} while (!InputService.isNameValid(name));
 
 		do {
-
-			isEmailValid = true;
-
 			System.out.print("Enter your email: ");
 			email = scanner.nextLine();
-
-			if (email.length() == 0) {
-				System.out.println("This field is mandatory... Please try again...");
-				isEmailValid = false;
-			} else if (!EmailValidator.getInstance(false).isValid(email)) {
-				System.out.println("Incorrect email format.. Please try again...");
-				isEmailValid = false;
-			}
-
-		} while (!isEmailValid);
+		} while (!InputService.isEmailValid(email));
 
 		do {
-
-			isSeatValid = true;
-
 			System.out.print("Please select your seat number: ");
 			seatNumber = scanner.nextLine();
-			seatNumber = seatNumber.toUpperCase();
-
-			if (!seatsService.doesSeatExist(seatNumber)) {
-				System.out.println("You seemed to have typed an invalid seat number. Please try again..");
-				isSeatValid = false;
-			} else if (!seatsService.isSeatAvailable(seatNumber)) {
-				System.out.println("Sorry, the seat you've entered is not available. Please select another seat...");
-				isSeatValid = false;
-			}
-
-		} while (!isSeatValid);
+		} while (!inputService.isSeatNumberValid(seatNumber));
 
 		Person person = InstanceCreator.getApplicationContext().getBean(Person.class);
-		person.setName(name);
-		person.setEmail(email);
+		person.setName(name.trim());
+		person.setEmail(email.trim());
 
 		Ticket ticket = InstanceCreator.getApplicationContext().getBean(Ticket.class);
 		ticket.setPerson(person);
-		ticket.setSeatNumber(seatNumber);
+		ticket.setSeatNumber(seatNumber.trim().toUpperCase());
 
 		return ticket;
 
