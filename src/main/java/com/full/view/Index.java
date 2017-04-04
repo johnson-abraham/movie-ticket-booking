@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import com.full.bean.Person;
 import com.full.bean.Ticket;
 import com.full.config.InstanceCreator;
+import com.full.service.InputService;
 import com.full.service.SeatsService;
 
 /**
@@ -24,6 +25,8 @@ public class Index {
 
 	@Autowired
 	private SeatsService seatsService;
+	@Autowired
+	private InputService inputService;
 
 	public void printSeats() {
 
@@ -64,7 +67,6 @@ public class Index {
 		String name = new String();
 		String email = new String();
 
-		boolean isNameValid = false;
 		boolean isEmailValid = false;
 		boolean isSeatValid = false;
 
@@ -73,23 +75,9 @@ public class Index {
 		System.out.println();
 
 		do {
-
-			isNameValid = true;
-
 			System.out.print("Enter your name: ");
 			name = scanner.nextLine();
-			name = name.trim();
-
-			if (name.length() == 0) {
-				System.out.println("This field is mandatory... Please try again...");
-				isNameValid = false;
-			} else if (name.matches(".*\\d+.*")) {
-				System.out.println("Name cannot numbers. Please enter only alphabets...");
-				isNameValid = false;
-
-			}
-
-		} while (!isNameValid);
+		} while (!inputService.isNameValid(name));
 
 		do {
 
