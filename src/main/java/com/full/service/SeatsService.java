@@ -26,16 +26,7 @@ public class SeatsService {
 	}
 
 	public boolean isSeatAvailable(String seatNumber) {
-		
-		boolean isSeatAvailable = true;
-		
-		try {
-			seatsDB.isSeatAvailable(seatNumber);
-		} catch(SeatAlreadyBookedException e) {
-			isSeatAvailable = false;
-		}
-		
-		return isSeatAvailable;
+		return seatsDB.isSeatAvailable(seatNumber);
 	}
 
 	public void changeSeatStatus(String seatNumber) {

@@ -54,12 +54,7 @@ public class SeatsDB {
 	}
 
 	public boolean isSeatAvailable(String seatNumber) {
-		
-		if(!seatNumbers.get(seatNumber)) {
-			throw new SeatAlreadyBookedException("This seat has been booked already.. ");
-		} else {
-			return true;
-		}
+		return seatNumbers.get(seatNumber);
 	}
 
 	public Map<String, Boolean> getSeatNumbers() {
