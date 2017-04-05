@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.full.db.SeatsDB;
+import com.full.exception.SeatAlreadyBookedException;
 
 /**
  * @author Johnson Abraham
@@ -25,7 +26,16 @@ public class SeatsService {
 	}
 
 	public boolean isSeatAvailable(String seatNumber) {
-		return seatsDB.isSeatAvailable(seatNumber);
+		
+		boolean isSeatAvailable = true;
+		
+		try {
+			seatsDB.isSeatAvailable(seatNumber);
+		} catch(SeatAlreadyBookedException e) {
+			isSeatAvailable = false;
+		}
+		
+		return isSeatAvailable;
 	}
 
 	public void changeSeatStatus(String seatNumber) {

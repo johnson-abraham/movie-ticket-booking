@@ -9,6 +9,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.full.exception.SeatAlreadyBookedException;
+
 /**
  * @author Johnson Abraham
  * @since 01-Apr-2017, 7:53:33 PM MovieTicketBooking
@@ -52,7 +54,12 @@ public class SeatsDB {
 	}
 
 	public boolean isSeatAvailable(String seatNumber) {
-		return seatNumbers.get(seatNumber);
+		
+		if(!seatNumbers.get(seatNumber)) {
+			throw new SeatAlreadyBookedException("This seat has been booked already.. ");
+		} else {
+			return true;
+		}
 	}
 
 	public Map<String, Boolean> getSeatNumbers() {
