@@ -46,6 +46,11 @@ public class SeatsDB {
 	}
 
 	public void changeSeatStatus(String seatNumber) {
+		
+		if(!seatNumbers.get(seatNumber)) {
+			throw new SeatAlreadyBookedException("Seat seems to have been booked already...");
+		}
+		
 		seatNumbers.put(seatNumber, false);
 	}
 

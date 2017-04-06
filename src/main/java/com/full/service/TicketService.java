@@ -21,8 +21,8 @@ public class TicketService {
 	@Autowired
 	private TicketBookedDB ticketBookedDB;
 
-	public boolean storeTicket(Ticket ticket) {
-		return ticketBookedDB.persist(ticket);
+	public void storeTicket(Ticket ticket) {
+		ticketBookedDB.persist(ticket);
 	}
 
 	public Set<Ticket> getTickets() {

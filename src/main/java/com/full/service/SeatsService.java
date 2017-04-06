@@ -29,8 +29,17 @@ public class SeatsService {
 		return seatsDB.isSeatAvailable(seatNumber);
 	}
 
-	public void changeSeatStatus(String seatNumber) {
-		seatsDB.changeSeatStatus(seatNumber);
+	public boolean changeSeatStatus(String seatNumber) {
+		
+		boolean isSeatStatusChanged = true;
+		
+		try {
+			seatsDB.changeSeatStatus(seatNumber);
+		} catch(SeatAlreadyBookedException e) {
+			isSeatStatusChanged = false;
+		}
+		
+		return isSeatStatusChanged;
 	}
 
 	public Map<String, Boolean> getSeats() {

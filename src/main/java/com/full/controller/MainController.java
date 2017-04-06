@@ -66,8 +66,8 @@ public class MainController {
 
 			Ticket ticket = index.showIndex();
 
-			if (context.getBean(TicketService.class).storeTicket(ticket)) {
-				context.getBean(SeatsService.class).changeSeatStatus(ticket.getSeatNumber());
+			if (context.getBean(SeatsService.class).changeSeatStatus(ticket.getSeatNumber())) {
+				context.getBean(TicketService.class).storeTicket(ticket);
 				index.printSuccessMessage(ticket);
 			} else {
 				index.printFailureMessage();
