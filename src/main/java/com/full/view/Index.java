@@ -6,9 +6,6 @@ package com.full.view;
 import java.util.Map;
 import java.util.Scanner;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.full.bean.Person;
 import com.full.bean.Ticket;
 import com.full.config.InstanceCreator;
@@ -19,12 +16,9 @@ import com.full.service.SeatsService;
  * @author Johnson Abraham
  * @since 02-Apr-2017, 6:45:08 PM MovieTicketBooking
  */
-@Component
 public class Index {
 
-	@Autowired
 	private SeatsService seatsService;
-	@Autowired
 	private InputService inputService;
 	
 	public void printSeats() {
@@ -108,6 +102,14 @@ public class Index {
 
 	public void printFailureMessage() {
 		System.out.println("Sorry, please try again later..");
+	}
+
+	public void setSeatsService(SeatsService seatsService) {
+		this.seatsService = seatsService;
+	}
+
+	public void setInputService(InputService inputService) {
+		this.inputService = inputService;
 	}
 
 }

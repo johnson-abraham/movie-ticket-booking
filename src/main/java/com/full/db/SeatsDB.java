@@ -6,19 +6,14 @@ package com.full.db;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import com.full.exception.SeatAlreadyBookedException;
 
 /**
  * @author Johnson Abraham
  * @since 01-Apr-2017, 7:53:33 PM MovieTicketBooking
  */
-@Component
 public class SeatsDB {
 
-	@Autowired
 	private Map<String, Boolean> seatNumbers;
 
 	public static final int ROWS = 7;
@@ -27,6 +22,10 @@ public class SeatsDB {
 	public SeatsDB(Map<String, Boolean> seatNumbers) {
 		this.seatNumbers = seatNumbers;
 		populateSeats();
+	}
+	
+	public SeatsDB() {
+		// TODO Auto-generated constructor stub
 	}
 
 	private void populateSeats() {
@@ -66,4 +65,9 @@ public class SeatsDB {
 		return new LinkedHashMap<String, Boolean>(seatNumbers);
 	}
 
+	public void setSeatNumbers(Map<String, Boolean> seatNumbers) {
+		this.seatNumbers = seatNumbers;
+		populateSeats();
+	}
+	
 }

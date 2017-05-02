@@ -6,7 +6,7 @@ package com.full.config;
 import java.util.Scanner;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * @author Johnson Abraham
@@ -20,7 +20,7 @@ public class InstanceCreator {
 	public static ApplicationContext getApplicationContext() {
 
 		if (applicationContext == null) {
-			applicationContext = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
+			applicationContext = new ClassPathXmlApplicationContext("spring-bean-config.xml");
 		}
 
 		return applicationContext;

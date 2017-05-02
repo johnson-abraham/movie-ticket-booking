@@ -5,15 +5,12 @@ package com.full.view;
 
 import java.util.Scanner;
 
-import org.springframework.stereotype.Component;
-
 import com.full.config.InstanceCreator;
 
 /**
  * @author Johnson Abraham
  * @since 03-Apr-2017, 12:37:07 PM MovieTicketBooking
  */
-@Component
 public class Choice {
 
 	public int getChoice() {

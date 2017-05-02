@@ -24,10 +24,10 @@ public class MainController {
 	public static void main(String[] args) {
 
 		ApplicationContext context = InstanceCreator.getApplicationContext();
-		Choice choice = context.getBean(Choice.class);
+		Choice choice = (Choice) context.getBean("choice");
 		MainController mainController = new MainController();
-		BookedTickets bookedTickets = context.getBean(BookedTickets.class);
-		context.getBean(TicketService.class).clearTickets();
+		BookedTickets bookedTickets = (BookedTickets) context.getBean("bookedTickets");
+		((TicketService) context.getBean("ticketService")).clearTickets();
 
 		int inputChoice = 0;
 
@@ -44,6 +44,7 @@ public class MainController {
 				bookedTickets.displayBookedTickets();
 				break;
 			case 3:
+				System.out.println("Thank you, have a nice day!!");
 				break;
 			default:
 				System.out.println("Please enter a number between 1 and 3...");
@@ -57,7 +58,7 @@ public class MainController {
 
 		ApplicationContext context = InstanceCreator.getApplicationContext();
 		Scanner input = InstanceCreator.getScanner();
-		Index index = context.getBean(Index.class);
+		Index index = (Index) context.getBean("index");
 
 		String toContinue = "yes";
 		boolean isInputValid = true;
@@ -66,8 +67,8 @@ public class MainController {
 
 			Ticket ticket = index.showIndex();
 
-			if (context.getBean(SeatsService.class).changeSeatStatus(ticket.getSeatNumber())) {
-				context.getBean(TicketService.class).storeTicket(ticket);
+			if (((SeatsService) context.getBean("seatsService")).changeSeatStatus(ticket.getSeatNumber())) {
+				((TicketService) context.getBean("ticketService")).storeTicket(ticket);
 				index.printSuccessMessage(ticket);
 			} else {
 				index.printFailureMessage();

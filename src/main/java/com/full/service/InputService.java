@@ -4,17 +4,14 @@
 package com.full.service;
 
 import org.apache.commons.validator.routines.EmailValidator;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 /**
  * @author Johnson Abraham
  * @since 04-Apr-2017, 8:23:15 AM MovieTicketBooking
  */
-@Component
+
 public class InputService {
 
-	@Autowired
 	private SeatsService seatsService;
 	
 	public static boolean isNameValid(String name) {
@@ -67,6 +64,10 @@ public class InputService {
 		}
 		
 		return isSeatValid;
+	}
+
+	public void setSeatsService(SeatsService seatsService) {
+		this.seatsService = seatsService;
 	}
 	
 }
