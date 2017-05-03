@@ -3,6 +3,8 @@
  */
 package com.full.bean;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  * @author Johnson Abraham
  * @since 01-Apr-2017, 7:51:57 PM MovieTicketBooking
@@ -23,6 +25,7 @@ public class Ticket {
 		return person;
 	}
 
+	@Autowired
 	public void setPerson(Person person) {
 		this.person = person;
 	}

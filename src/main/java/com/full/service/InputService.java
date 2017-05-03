@@ -4,6 +4,7 @@
 package com.full.service;
 
 import org.apache.commons.validator.routines.EmailValidator;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author Johnson Abraham
@@ -66,6 +67,7 @@ public class InputService {
 		return isSeatValid;
 	}
 
+	@Autowired
 	public void setSeatsService(SeatsService seatsService) {
 		this.seatsService = seatsService;
 	}

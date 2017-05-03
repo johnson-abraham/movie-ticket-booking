@@ -5,6 +5,8 @@ package com.full.service;
 
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.full.db.SeatsDB;
 import com.full.exception.SeatAlreadyBookedException;
 
@@ -49,6 +51,7 @@ public class SeatsService {
 		return SeatsDB.COLUMNS;
 	}
 
+	@Autowired
 	public void setSeatsDB(SeatsDB seatsDB) {
 		this.seatsDB = seatsDB;
 	}

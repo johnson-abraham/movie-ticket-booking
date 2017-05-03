@@ -5,6 +5,8 @@ package com.full.view;
 
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.full.bean.Ticket;
 import com.full.service.TicketService;
 
@@ -31,6 +33,7 @@ public class BookedTickets {
 		}
 	}
 
+	@Autowired
 	public void setTicketService(TicketService ticketService) {
 		this.ticketService = ticketService;
 	}

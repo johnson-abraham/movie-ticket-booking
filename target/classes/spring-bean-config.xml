@@ -1,51 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
 	<bean id="person" class="com.full.bean.Person" scope="prototype"></bean>
 
 	<bean id="ticket" class="com.full.bean.Ticket" scope="prototype">
-		<property name="person" ref="person"></property>
+		
 	</bean>
 
 	<util:map id="map" key-type="java.lang.String" map-class="java.util.LinkedHashMap"
 		value-type="java.lang.Boolean">
 	</util:map>
-	
+
 	<util:set id="set" set-class="java.util.HashSet" value-type="com.full.bean.Ticket">
 	</util:set>
 
 	<bean id="seatsDB" class="com.full.db.SeatsDB">
 		<property name="seatNumbers" ref="map"></property>
 	</bean>
-	
+
 	<bean id="ticketBookedDB" class="com.full.db.TicketBookedDB">
 		<property name="bookedTickets" ref="set"></property>
 	</bean>
 
 	<bean id="seatsService" class="com.full.service.SeatsService">
-		<property name="seatsDB" ref="seatsDB"></property>
+		
 	</bean>
-	
+
 	<bean id="inputService" class="com.full.service.InputService">
-		<property name="seatsService" ref="seatsService"></property>
+		
 	</bean>
 
 	<bean id="ticketService" class="com.full.service.TicketService">
-		<property name="ticketBookedDB" ref="ticketBookedDB"></property>
+		
 	</bean>
-	
+
 	<bean id="bookedTickets" class="com.full.view.BookedTickets">
-		<property name="ticketService" ref="ticketService"></property>
+		
 	</bean>
-	
+
 	<bean id="choice" class="com.full.view.Choice"></bean>
-	
+
 	<bean id="index" class="com.full.view.Index">
-		<property name="inputService" ref="inputService"></property>
-		<property name="seatsService" ref="seatsService"></property>
+		
+		
 	</bean>
-	
+
+	<context:annotation-config></context:annotation-config>
 </beans>

@@ -5,6 +5,8 @@ package com.full.service;
 
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.full.bean.Ticket;
 import com.full.db.TicketBookedDB;
 
@@ -28,6 +30,7 @@ public class TicketService {
 		ticketBookedDB.clearTickets();
 	}
 
+	@Autowired
 	public void setTicketBookedDB(TicketBookedDB ticketBookedDB) {
 		this.ticketBookedDB = ticketBookedDB;
 	}

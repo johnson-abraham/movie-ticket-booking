@@ -6,6 +6,8 @@ package com.full.view;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.full.bean.Person;
 import com.full.bean.Ticket;
 import com.full.config.InstanceCreator;
@@ -104,10 +106,12 @@ public class Index {
 		System.out.println("Sorry, please try again later..");
 	}
 
+	@Autowired
 	public void setSeatsService(SeatsService seatsService) {
 		this.seatsService = seatsService;
 	}
 
+	@Autowired
 	public void setInputService(InputService inputService) {
 		this.inputService = inputService;
 	}
